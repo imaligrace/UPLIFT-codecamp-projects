@@ -1,0 +1,701 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  list-style: none;
+}
+
+/* BRANDING STYLES */
+
+:root {
+  --ff-primary: "Inter", sans-serif;
+  --ff-secondary: "Caveat", cursive;
+
+  --ff-reg: 100;
+  --ff-bold: 700;
+  --ff-bolder: 900;
+
+  --fs-h1: 5rem;
+  --fs-h2: 3.5rem;
+  --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-body: 1rem;
+
+  --clr-light: #f1f1f1;
+  --clr-dark: #d9d9d9;
+  --clr-accent: #ff5d47;
+}
+
+/* GENERAL */
+
+body {
+  background: #f8f8f8;
+  font-family: var(--ff-primary);
+  box-sizing: border-box;
+}
+
+section {
+  width: 80%;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.section-title {
+  position: absolute;
+  top: 3rem;
+  left: 5rem;
+  font-size: var(--fs-h4);
+}
+
+.section-bar {
+  width: 50px;
+  height: 7px;
+  background-color: #ff5d47;
+  margin-bottom: 1rem;
+  position: absolute;
+  top: 6rem;
+  left: 5rem;
+  border-radius: 1rem;
+}
+
+span {
+  color: var(--clr-accent);
+}
+
+/* HEADER-NAV */
+
+nav {
+  position: fixed;
+  /* why does my nav disarranged when i put this on :( */
+  /* problem with link and z-index too */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10.5%;
+  height: 75px;
+  line-height: 75px;
+  background: black;
+  z-index: 1000;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s ease;
+}
+
+nav .navbar-logo {
+  color: var(--clr-accent);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+nav .nav-list {
+  display: flex;
+}
+
+nav .nav-list .nav-item {
+  cursor: pointer;
+  height: 100%;
+  padding: 0 25px;
+  transition: 0.7s;
+}
+
+nav .nav-list .nav-item:hover {
+  background: var(--clr-accent);
+  color: white;
+}
+
+nav .nav-list .nav-link {
+  color: #f1f1f1;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+nav .nav-list .nav-link:hover {
+  color: black;
+}
+
+/* HEADER MEDIA QUERY --- the burger */
+
+@media (max-width: 935px) {
+  nav {
+    padding: 0 2rem;
+  }
+
+  nav .nav-list .nav-item {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+/* problem with nav drop down vs z-index */
+  
+
+  nav .nav-list {
+    display: grid;
+    position: absolute;
+    background: var(--clr-accent);
+    width: 100%;
+    top: 75px;
+    left: 0;
+    transform: translateY(-100%);
+    z-index: -2;
+    transition: 0.4s;
+    /* width: fit-content; */
+    /* padding: 0; */
+  }
+
+  nav .nav-list .nav-item {
+    padding-left: 35px;
+  }
+
+  nav .navbar-toggler {
+    display: grid !important;
+  }
+}
+
+nav .navbar-toggler {
+  display: none;
+  height: min-content;
+  margin: 18px -10px 0 0;
+  cursor: pointer;
+}
+
+nav .navbar-toggler .bar {
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 10%;
+  transition: 0.4s;
+}
+
+input {
+  display: none;
+}
+
+input:checked ~ nav .nav-list {
+  transform: translateY(0);
+}
+
+input:checked ~ nav .navbar-toggler {
+  margin-top: 35px;
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(1) {
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(2) {
+  display: none;
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* END OF HEADER-NAV */
+
+/* HOME SECTION STYLE */
+
+.home {
+  min-height: 78vh;
+  position: relative;
+  top: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6%;
+  background: url(./p-images/dawg.jpg) no-repeat;
+  background-size: cover;
+  background-position: -10% 30%;
+}
+.home-content h4 {
+  font-family: var(--ff-secondary);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 3.5rem;
+  letter-spacing: 0.1rem;
+}
+
+.home-content h1 {
+  font-size: var(--fs-h1);
+  font-weight: 800px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.home-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+/* this link doesnt work  because of z-link problem? */
+.home-btn {
+  display: inline-block;
+  padding: 14px 60px;
+  margin-top: 0.75rem;
+  background-color: var(--clr-accent);
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  border: 2px solid white;
+  border-radius: 1rem;
+  transition: all 0.4s ease;
+}
+
+.home-btn:hover {
+  background-color: transparent;
+  color: var(--clr-accent);
+  border: 2px solid var(--clr-accent);
+  transform: scale(1.01) translateY(-5px);
+}
+/* end of HOME */
+
+/* ABOUT SECTION STYLE */
+
+.about {
+  max-height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* align-items: center; */
+  gap: 2rem;
+  background-color: var(--clr-light);
+  position: relative;
+  top: 140px;
+  padding: 8rem 5rem 4rem 5rem;
+}
+
+.about-body {
+  margin-right: 30px;
+}
+
+.about-body h3 {
+  margin: 20px 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: 700px;
+}
+
+.about-body h4 {
+  font-family: var(--ff-secondary);
+  font-weight: bolder;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  letter-spacing: 0.08rem;
+}
+
+.about-body p {
+  font-size: var(--ff-reg);
+  line-height: 30px;
+  margin-bottom: 1.5rem;
+  font-weight: lighter;
+}
+
+.about-bullet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.about-item h5 {
+  font-size: var(--ff-reg);
+  font-weight: 400;
+}
+
+.about-btn-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.about-btn1 {
+  /* display: inline-block; */
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 1rem;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.4s ease;
+}
+
+.about-btn1:hover {
+  background-color: transparent;
+  border: solid var(--clr-accent);
+  border-radius: 1rem;
+  color: black;
+  transform: scale(1.01) translateY(-5px);
+}
+
+.about-btn2 {
+  /* display: inline-block; */
+  background-color: transparent;
+  border: solid var(--clr-accent);
+  border-radius: 1rem;
+  color: black;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.4s ease;
+}
+
+.about-btn2:hover {
+  color: white;
+  background-color: var(--clr-accent);
+  border-radius: 10px;
+  transform: scale(1.01) translateY(-5px);
+}
+
+.about-img > img {
+  height: auto;
+  width: 100%;
+  max-width: 460px;
+  border-radius: 1rem;
+}
+/* end of ABOUT */
+
+/* SERVICES SECTION */
+
+.services {
+  max-height: auto;
+  background-color: var(--clr-light);
+  position: relative;
+  top: 170px;
+  padding: 8rem 5rem 3.5rem 5rem;
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  text-align: center;
+  gap: 2.2rem;
+  margin-top: 1.7rem;
+}
+
+.services-item {
+  height: fit-content;
+  padding: 50px 22px;
+  background: white;
+  border-top: 5px solid transparent;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.services-img {
+  width: 50px;
+}
+.services-item h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 15px 0;
+  transition: all 0.4s ease;
+}
+.services-item p {
+  font-size: 15px;
+  font-weight: lighter;
+  line-height: 25px;
+}
+
+.services-item:hover {
+  transform: scale(1.01) translateY(-5px);
+  border-top: 5px solid var(--clr-accent);
+}
+/* end of SERVICES */
+
+/* SKILLS STYLE */
+.skills-container {
+  max-height: auto;
+  background: var(--clr-accent);
+  padding: 1rem;
+  position: relative;
+  top: 200px;
+  display: flex;
+  /* flex-flow: row; */
+  border-radius: 1rem;
+  justify-content: space-around;
+  align-items: center;
+}
+.skills-img {
+  width: 80px;
+}
+/* end of skills */
+
+/* WORKS STYLE */
+
+.works {
+  max-height: auto;
+  background-color: var(--clr-light);
+  position: relative;
+  top: 230px;
+  padding: 3rem 5% 30px 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+}
+
+.works-img > img {
+  width: 22rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+.works-container {
+  margin: 100px 0 20px 1.5rem;
+  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.works-container figure {
+  width: 25rem;
+  background-color: white;
+  box-shadow: #d9d9d9;
+  border-radius: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.work-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: #ff5d47;
+  margin-bottom: 0.5rem;
+}
+.work-desc {
+  font-size: 15px;
+  font-weight: lighter;
+  line-height: 25px;
+  margin-bottom: 0.7rem;
+  padding: 0 2rem;
+}
+.work-note {
+  max-height: 30px;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  padding: 5px 20px;
+  margin: 1rem;
+}
+/* end of WORKS */
+
+/* FOOTER STYLE */
+
+.footer {
+  background-color: black;
+  color: var(--clr-accent);
+  text-align: center;
+  padding: 1.5rem 0;
+  position: relative;
+  top: 230px;
+  z-index: 100;
+}
+
+.footer a {
+  color: var(--clr-accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 2 px;
+  margin: auto;
+}
+
+.social-list {
+  display: inline-flex;
+  list-style: none;
+}
+.social-list-link > img {
+  width: 40px;
+  margin: 0 1.3rem;
+}
+.footer-verse {
+  font-size: 0.5rem;
+  font-family: var(--ff-secondary);
+  letter-spacing: 0.05rem;
+  color: white;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 768px) {
+  section {
+    width: 85%;
+  }
+  .section-title {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+  }
+  .section-bar {
+    position: absolute;
+    top: 5rem;
+    left: 2rem;
+  }
+}
+
+/* for home */
+
+@media only screen and (max-width: 768px) {
+  .home {
+    width: 90%;
+    background-position: 7% 45%;
+    position: relative;
+    top: 110px;
+    margin: auto;
+    z-index: -100;
+  }
+  .home-content h4 {
+    line-height: 5rem;
+  }
+  .home-content h1 {
+    line-height: 4.5rem;
+  }
+  .home-content h3 {
+    margin-top: 0.5rem;
+    line-height: 2rem;
+  }
+  /* why is my section link not working when in this format? */
+}
+
+/* media for ABOUT */
+@media only screen and (max-width: 768px) {
+  .about {
+    display: flex;
+    align-items: start;
+    width: 90%;
+    padding: 6rem 0.1rem 1rem 2rem;
+  }
+  .about-body h4 {
+    font-size: 1.2rem;
+  }
+  .about-body p {
+    font-size: 0.85rem;
+  }
+  .about-bullet {
+    font-size: 12px;
+  }
+  .about-btn1,
+  .about-btn2 {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .about-img > img {
+    position: absolute;
+    top: 2rem;
+    right: 1.5rem;
+    max-width: 3.5rem;
+    border-radius: 1rem;
+  }
+  /* this was just band-aid remedy for photo in media query, how to solve really? */
+}
+/* media for SERVICES */
+@media only screen and (max-width: 768px) {
+  .services {
+    display: flex;
+    align-items: start;
+    width: 90%;
+    padding: 7rem 0.1rem 2rem 2rem;
+  }
+
+  .services-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    gap: 1rem;
+  }
+}
+.services-item {
+  height: fit-content;
+  padding: 30px 15px;
+  background: white;
+  align-items: center;
+}
+
+.services-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+/* media for SSKILLS */
+@media only screen and (max-width: 768px) {
+  .skills {
+    display: flex;
+    align-items: start;
+    width: 90%;
+  }
+  .skills-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .works {
+    width: 90%;
+    display: flex;
+    padding: 1.5rem;
+  }
+
+  .works-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+  }
+
+  .works-container figure {
+    width: 18rem;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+  .works-img > img {
+    width: 15rem;
+    margin: 1rem 0.25rem 0.25rem 0.25rem;
+  }
+
+  .work-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+  .work-desc {
+    font-size: 11px;
+    line-height: 20px;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+  }
+  .work-note {
+    font-size: 11px;
+    padding: 5px;
+    margin: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    top: 220px;
+  }
+  .footer-verse {
+    font-size: 0.2rem;
+  }
+}
